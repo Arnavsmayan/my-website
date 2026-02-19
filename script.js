@@ -5,98 +5,89 @@
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
 
-// Web3Forms Access Key
-const WEB3FORMS_KEY = '66818d8b-131e-41b4-b763-80a2a7dcbf3b';
-
 // Spam protection: Max 2 submissions per browser session
 const MAX_SUBMISSIONS = 2;
 const SUBMISSION_KEY = 'contactFormSubmissions';
 
 function checkSpamLimit() {
-const submissions = JSON.parse(sessionStorage.getItem(SUBMISSION_KEY)) || 0;
-
-if (submissions >= MAX_SUBMISSIONS) {
-return false;
-}
-return true;
+  const submissions = JSON.parse(sessionStorage.getItem(SUBMISSION_KEY)) || 0;
+  return submissions < MAX_SUBMISSIONS;
 }
 
 function incrementSubmissionCount() {
-const submissions = JSON.parse(sessionStorage.getItem(SUBMISSION_KEY)) || 0;
-sessionStorage.setItem(SUBMISSION_KEY, JSON.stringify(submissions + 1));
+  const submissions = JSON.parse(sessionStorage.getItem(SUBMISSION_KEY)) || 0;
+  sessionStorage.setItem(SUBMISSION_KEY, JSON.stringify(submissions + 1));
 }
 
 contactForm.addEventListener('submit', async (e) => {
-e.preventDefault();
+  e.preventDefault();
 
-// Check spam limit
-if (!checkSpamLimit()) {
-formMessage.textContent = '✗ You have reached the maximum submissions for this session (2). Please try again later.';
-formMessage.classList.add('error');
-formMessage.classList.remove('success');
+  // Check spam limit
+  if (!checkSpamLimit()) {
+    formMessage.textContent = '✗ You have reached the maximum submissions for this session (2). Please try again later.';
+    formMessage.classList.add('error');
+    formMessage.classList.remove('success');
+    setTimeout(() => {
+      formMessage.textContent = '';
+      formMessage.classList.remove('error');
+    }, 5000);
+    return;
+  }
 
-setTimeout(() => {
-formMessage.textContent = '';
-formMessage.classList.remove('error');
-}, 5000);
-return;
-}
+  // Show loading state
+  const submitButton = contactForm.querySelector('.submit-button');
+  const originalText = submitButton.textContent;
+  submitButton.textContent = 'Sending...';
+  submitButton.disabled = true;
 
-// Get form data
-const formData = new FormData(contactForm);
-formData.append('access_key', WEB3FORMS_KEY);
-formData.append('from_name', 'Career Coaching Website');
-formData.append('redirect', 'https://Arnavsmayan.github.io/my-website');
+  try {
+    // Build a plain object from the form and send as JSON
+    const data = {
+      access_key: '66818d8b-131e-41b4-b763-80a2a7dcbf3b',
+      name: contactForm.querySelector('[name="name"]').value,
+      email: contactForm.querySelector('[name="email"]').value,
+      subject: contactForm.querySelector('[name="subject"]')?.value || 'New Contact Form Submission',
+      message: contactForm.querySelector('[name="message"]').value,
+      from_name: 'Career Coaching Website'
+    };
 
-// Show loading state
-const submitButton = contactForm.querySelector('.submit-button');
-const originalText = submitButton.textContent;
-submitButton.textContent = 'Sending...';
-submitButton.disabled = true;
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
-try {
-// Using Web3Forms service (free, unlimited submissions)
-const response = await fetch('https://api.web3forms.com/submit', {
-method: 'POST',
-body: formData
-});
+    const result = await response.json();
 
-const data = await response.json();
-
-if (data.success) {
-// Increment submission count on successful send
-incrementSubmissionCount();
-
-formMessage.textContent = '✓ Message sent successfully! I'll get back to you soon.';
-formMessage.classList.add('success');
-formMessage.classList.remove('error');
-
-// Reset form
-contactForm.reset();
-
-// Clear message after 5 seconds
-setTimeout(() => {
-formMessage.textContent = '';
-formMessage.classList.remove('success');
-}, 5000);
-} else {
-throw new Error(data.message || 'Failed to send message');
-}
-} catch (error) {
-console.error('Error:', error);
-formMessage.textContent = '✗ Error sending message. Please try again or email me directly.';
-formMessage.classList.add('error');
-formMessage.classList.remove('success');
-
-// Clear message after 5 seconds
-setTimeout(() => {
-formMessage.textContent = '';
-formMessage.classList.remove('error');
-}, 5000);
-} finally {
-submitButton.textContent = originalText;
-submitButton.disabled = false;
-}
+    if (result.success) {
+      incrementSubmissionCount();
+      formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+      formMessage.classList.add('success');
+      formMessage.classList.remove('error');
+      contactForm.reset();
+      setTimeout(() => {
+        formMessage.textContent = '';
+        formMessage.classList.remove('success');
+      }, 5000);
+    } else {
+      throw new Error(result.message || 'Failed to send message');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    formMessage.textContent = '✗ Error sending message. Please try again or email me directly.';
+    formMessage.classList.add('error');
+    formMessage.classList.remove('success');
+    setTimeout(() => {
+      formMessage.textContent = '';
+      formMessage.classList.remove('error');
+    }, 5000);
+  } finally {
+    submitButton.textContent = originalText;
+    submitButton.disabled = false;
+  }
 });
 
 // ====================
@@ -104,17 +95,16 @@ submitButton.disabled = false;
 // ====================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-const target = document.querySelector(this.getAttribute('href'));
-
-if (target) {
-target.scrollIntoView({
-behavior: 'smooth',
-block: 'start'
-});
-}
-});
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
 });
 
 // ====================
@@ -122,24 +112,21 @@ block: 'start'
 // ====================
 
 window.addEventListener('scroll', () => {
-let current = '';
+  let current = '';
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (scrollY >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
 
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-const sectionTop = section.offsetTop;
-const sectionHeight = section.clientHeight;
-
-if (scrollY >= sectionTop - 200) {
-current = section.getAttribute('id');
-}
-});
-
-document.querySelectorAll('.nav-menu a').forEach(link => {
-link.classList.remove('active');
-if (link.getAttribute('href') === `#${current}`) {
-link.classList.add('active');
-}
-});
+  document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
 });
 
 // ====================
@@ -147,116 +134,83 @@ link.classList.add('active');
 // ====================
 
 const observerOptions = {
-threshold: 0.1,
-rootMargin: '0px 0px -100px 0px'
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-entries.forEach((entry, index) => {
-if (entry.isIntersecting) {
-// Get the type of element for different animations
-const element = entry.target;
-const isCard = element.classList.contains('highlight-card') ||
-element.classList.contains('rating-card') ||
-element.classList.contains('package-card');
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      const element = entry.target;
+      const isCard = element.classList.contains('highlight-card') ||
+                     element.classList.contains('rating-card') ||
+                     element.classList.contains('package-card');
 
-if (isCard) {
-// Stagger animation for cards
-const delay = index % 4 * 100; // Stagger by 100ms per card
-setTimeout(() => {
-element.style.animation = 'fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-}, delay);
-} else if (element.classList.contains('form-group')) {
-// Form groups slide in from left
-const delay = index % 5 * 80;
-setTimeout(() => {
-element.style.animation = 'slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-}, delay);
-} else {
-// Default fade in up
-element.style.animation = 'fadeInUp 0.6s ease forwards';
-}
-}
-});
+      if (isCard) {
+        const delay = index % 4 * 100;
+        setTimeout(() => {
+          element.style.animation = 'fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+        }, delay);
+      } else if (element.classList.contains('form-group')) {
+        const delay = index % 5 * 80;
+        setTimeout(() => {
+          element.style.animation = 'slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+        }, delay);
+      } else {
+        element.style.animation = 'fadeInUp 0.6s ease forwards';
+      }
+    }
+  });
 }, observerOptions);
 
-// Observe all cards and sections
 document.querySelectorAll('.highlight-card, .rating-card, .package-card, .form-group').forEach(el => {
-el.style.opacity = '0';
-observer.observe(el);
+  el.style.opacity = '0';
+  observer.observe(el);
 });
 
 // Animate section headings
 const headings = document.querySelectorAll('h2');
 headings.forEach(heading => {
-const headingObserver = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.style.animation = 'slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
-headingObserver.unobserve(entry.target);
-}
-});
-}, { threshold: 0.5 });
+  const headingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+        headingObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
 
-heading.style.opacity = '0';
-headingObserver.observe(heading);
+  heading.style.opacity = '0';
+  headingObserver.observe(heading);
 });
 
 // ====================
-// CSS Animation
+// CSS Animations (injected)
 // ====================
 
 const style = document.createElement('style');
 style.textContent = `
-@keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(40px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-@keyframes slideInLeft {
-from {
-opacity: 0;
-transform: translateX(-40px);
-}
-to {
-opacity: 1;
-transform: translateX(0);
-}
-}
-
-@keyframes slideInRight {
-from {
-opacity: 0;
-transform: translateX(40px);
-}
-to {
-opacity: 1;
-transform: translateX(0);
-}
-}
-
-@keyframes scaleIn {
-from {
-opacity: 0;
-transform: scale(0.95);
-}
-to {
-opacity: 1;
-transform: scale(1);
-}
-}
-
-.nav-menu a.active {
-color: var(--accent);
-border-bottom: 3px solid var(--accent);
-padding-bottom: 5px;
-}
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .nav-menu a.active {
+    color: var(--accent);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 5px;
+  }
 `;
 document.head.appendChild(style);
 
