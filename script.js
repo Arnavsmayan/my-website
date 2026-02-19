@@ -45,8 +45,8 @@ return;
 // Get form data
 const formData = new FormData(contactForm);
 formData.append('access_key', WEB3FORMS_KEY);
-formData.append('to_email', 'arnavjainaj17@gmail.com');
-formData.append('subject', 'New Contact Form Submission');
+formData.append('from_name', 'Career Coaching Website');
+formData.append('redirect', 'https://Arnavsmayan.github.io/my-website');
 
 // Show loading state
 const submitButton = contactForm.querySelector('.submit-button');
@@ -80,7 +80,7 @@ formMessage.textContent = '';
 formMessage.classList.remove('success');
 }, 5000);
 } else {
-throw new Error('Failed to send message');
+throw new Error(data.message || 'Failed to send message');
 }
 } catch (error) {
 console.error('Error:', error);
