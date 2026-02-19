@@ -21,9 +21,9 @@ submitButton.textContent = 'Sending...';
 submitButton.disabled = true;
 
 try {
-// Using FormSubmit.co service (free, no backend needed)
+// Using Formspree service (free, no backend needed)
 // First time you submit, you'll get an email to confirm
-const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+const response = await fetch('https://formspree.io/f/arnavjainaj17@gmail.com', {
 method: 'POST',
 body: formData,
 headers: {
