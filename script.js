@@ -1,5 +1,5 @@
 // ====================
-// Contact Form Handler with Spam Protection & Web3Forms
+// Contact Form Handler with Spam Protection
 // ====================
 
 const contactForm = document.getElementById('contactForm');
@@ -19,73 +19,10 @@ function incrementSubmissionCount() {
   sessionStorage.setItem(SUBMISSION_KEY, JSON.stringify(submissions + 1));
 }
 
-function showSuccessScreen() {
-  // Replace the entire form with a success message + home button
-  const formContainer = contactForm.parentElement;
-  formContainer.innerHTML = `
-    <div id="successScreen" style="
-      text-align: center;
-      padding: 60px 40px;
-      background: linear-gradient(135deg, #ffffff 0%, #fdf9f5 100%);
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(139, 115, 85, 0.1);
-      border: 1px solid rgba(139, 115, 85, 0.1);
-      max-width: 600px;
-      margin: 0 auto;
-      animation: fadeInUp 0.6s ease forwards;
-    ">
-      <div style="font-size: 72px; margin-bottom: 20px;">✅</div>
-      <h3 style="
-        font-size: 28px;
-        color: #8b7355;
-        margin-bottom: 15px;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-      ">Message Sent!</h3>
-      <p style="
-        color: #666;
-        font-size: 16px;
-        line-height: 1.7;
-        margin-bottom: 35px;
-        max-width: 380px;
-        margin-left: auto;
-        margin-right: auto;
-      ">Thank you for reaching out. I'll get back to you as soon as possible!</p>
-      <a href="#home" id="goHomeBtn" style="
-        display: inline-block;
-        padding: 14px 45px;
-        background: #8b7355;
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 15px;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
-      ">← Back to Home</a>
-    </div>
-  `;
-
-  // Smooth scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // Hover effect on the button
-  const btn = document.getElementById('goHomeBtn');
-  btn.addEventListener('mouseenter', () => {
-    btn.style.transform = 'translateY(-4px)';
-    btn.style.boxShadow = '0 15px 35px rgba(139, 115, 85, 0.35)';
-  });
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = 'translateY(0)';
-    btn.style.boxShadow = '0 8px 25px rgba(139, 115, 85, 0.25)';
-  });
-}
-
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
+contactForm.addEventListener('submit', (e) => {
   // Check spam limit
   if (!checkSpamLimit()) {
+    e.preventDefault();
     formMessage.textContent = '✗ You have reached the maximum submissions for this session (2). Please try again later.';
     formMessage.classList.add('error');
     formMessage.classList.remove('success');
@@ -96,51 +33,13 @@ contactForm.addEventListener('submit', async (e) => {
     return;
   }
 
+  // Increment submission count before form submits
+  incrementSubmissionCount();
+  
   // Show loading state
   const submitButton = contactForm.querySelector('.submit-button');
-  const originalText = submitButton.textContent;
   submitButton.textContent = 'Sending...';
   submitButton.disabled = true;
-
-  try {
-    const data = {
-      access_key: '66818d8b-131e-41b4-b763-80a2a7dcbf3b',
-      name: contactForm.querySelector('[name="name"]').value,
-      email: contactForm.querySelector('[name="email"]').value,
-      subject: contactForm.querySelector('[name="subject"]')?.value || 'New Contact Form Submission',
-      message: contactForm.querySelector('[name="message"]').value,
-      from_name: 'Career Coaching Website'
-    };
-
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      incrementSubmissionCount();
-      showSuccessScreen(); // 🎉 Show success UI instead of reloading
-    } else {
-      throw new Error(result.message || 'Failed to send message');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    formMessage.textContent = '✗ Error sending message. Please try again or email me directly.';
-    formMessage.classList.add('error');
-    formMessage.classList.remove('success');
-    submitButton.textContent = originalText;
-    submitButton.disabled = false;
-    setTimeout(() => {
-      formMessage.textContent = '';
-      formMessage.classList.remove('error');
-    }, 5000);
-  }
 });
 
 // ====================
