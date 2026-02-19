@@ -19,10 +19,15 @@ function incrementSubmissionCount() {
   sessionStorage.setItem(SUBMISSION_KEY, JSON.stringify(submissions + 1));
 }
 
-contactForm.addEventListener('submit', (e) => {
+// ⚠️  IMPORTANT: Replace 'YOUR_WEB3FORMS_ACCESS_KEY' below with your real key.
+//     Get a free key at https://web3forms.com — just enter your email.
+const WEB3FORMS_ACCESS_KEY = '66818d8b-131e-41b4-b763-80a2a7dcbf3b';
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault(); // ← Prevents page reload (was missing before!)
+
   // Check spam limit
   if (!checkSpamLimit()) {
-    e.preventDefault();
     formMessage.textContent = '✗ You have reached the maximum submissions for this session (2). Please try again later.';
     formMessage.classList.add('error');
     formMessage.classList.remove('success');
@@ -33,13 +38,51 @@ contactForm.addEventListener('submit', (e) => {
     return;
   }
 
-  // Increment submission count before form submits
-  incrementSubmissionCount();
-  
   // Show loading state
   const submitButton = contactForm.querySelector('.submit-button');
   submitButton.textContent = 'Sending...';
   submitButton.disabled = true;
+
+  try {
+    // Build the form payload
+    const formData = new FormData(contactForm);
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+
+    // Actually send the email via Web3Forms
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      // Success — increment count and show success message
+      incrementSubmissionCount();
+      formMessage.textContent = '✓ Message sent! I\'ll get back to you shortly.';
+      formMessage.classList.add('success');
+      formMessage.classList.remove('error');
+      contactForm.reset();
+    } else {
+      throw new Error(result.message || 'Submission failed');
+    }
+  } catch (err) {
+    // Something went wrong — show error, do NOT increment count
+    console.error('Form submission error:', err);
+    formMessage.textContent = '✗ Something went wrong. Please try again or email me directly.';
+    formMessage.classList.add('error');
+    formMessage.classList.remove('success');
+  } finally {
+    // Always restore the button
+    submitButton.textContent = 'Send Message';
+    submitButton.disabled = false;
+
+    // Auto-clear the message after 6 seconds
+    setTimeout(() => {
+      formMessage.textContent = '';
+      formMessage.classList.remove('success', 'error');
+    }, 6000);
+  }
 });
 
 // ====================
