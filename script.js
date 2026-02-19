@@ -45,6 +45,8 @@ return;
 // Get form data
 const formData = new FormData(contactForm);
 formData.append('access_key', WEB3FORMS_KEY);
+formData.append('to_email', 'arnavjainaj17@gmail.com');
+formData.append('subject', 'New Contact Form Submission');
 
 // Show loading state
 const submitButton = contactForm.querySelector('.submit-button');
