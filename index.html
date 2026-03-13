@@ -1,186 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Coaching - Professional Development & Career Guidance</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arnav Jain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-bg: #ffffff;
+      --nav-active-bg: #0a0a0a;
+      --nav-active-text: #ffffff;
+      --accent: #2563eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 54px;
+    }
+
+    .nav-name {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      transition: all 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links a.active {
+      background: var(--nav-active-bg);
+      color: var(--nav-active-text);
+      font-weight: 500;
+    }
+
+    .nav-icons { display: flex; align-items: center; gap: 0.65rem; }
+
+    .nav-icons a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-icons a:hover { color: var(--text); }
+
+    /* LAYOUT */
+    .site-content { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+
+    section {
+      padding-top: 88px;
+      padding-bottom: 88px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+      line-height: 1.15;
+    }
+
+    /* ABOUT */
+    .about-text { font-size: 0.94rem; color: #374151; line-height: 1.8; max-width: 620px; }
+    .about-text p { margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.75rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card-bg);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .resume-btn:hover { background: #f9fafb; border-color: #d1d5db; }
+
+    /* TIMELINE */
+    .timeline { position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .tl-item { position: relative; padding-left: 2rem; margin-bottom: 1rem; }
+
+    .tl-dot {
+      position: absolute;
+      left: -5px;
+      top: 14px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--text);
+    }
+
+    .tl-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.35rem;
+    }
+
+    .tl-header { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.15rem; }
+    .tl-title { font-size: 0.94rem; font-weight: 500; }
+    .tl-company { color: var(--muted); font-size: 0.88rem; }
+
+    .tl-date {
+      font-size: 0.76rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      margin-bottom: 0.65rem;
+    }
+
+    .tl-card ul { padding-left: 1rem; color: #374151; font-size: 0.87rem; line-height: 1.65; }
+    .tl-card ul li { margin-bottom: 0.35rem; }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* PILLS */
+    .pills { display: flex; flex-wrap: wrap; gap: 0.32rem; margin-top: 0.8rem; }
+
+    .pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.18rem 0.62rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+
+    .pill-blue   { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+    .pill-green  { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+    .pill-purple { background: #faf5ff; color: #7e22ce; border-color: #e9d5ff; }
+    .pill-amber  { background: #fffbeb; color: #92400e; border-color: #fde68a; }
+    .pill-coral  { background: #fff1f2; color: #9f1239; border-color: #fecdd3; }
+    .pill-teal   { background: #f0fdfa; color: #0f766e; border-color: #99f6e4; }
+    .pill-gray   { background: #f9fafb; color: #374151; border-color: #e5e7eb; }
+
+    /* PROJECTS */
+    .section-desc { font-size: 0.88rem; color: var(--muted); margin-top: -1.5rem; margin-bottom: 1.75rem; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+    }
+
+    .proj-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.05rem;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px;
+    }
+
+    .proj-card:hover { border-color: #9ca3af; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+
+    .proj-name { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.32rem; line-height: 1.35; letter-spacing: -0.01em; }
+    .proj-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    .proj-card-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 0.6rem; }
+    .proj-gh { color: var(--muted); transition: color 0.15s; }
+    .proj-gh:hover { color: var(--text); }
+
+    /* PUBLICATIONS */
+    .pub-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.35rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .pub-title { font-size: 0.91rem; font-weight: 500; margin-bottom: 0.2rem; line-height: 1.4; letter-spacing: -0.01em; }
+    .pub-venue { font-size: 0.74rem; color: var(--muted); font-family: 'DM Mono', monospace; margin-bottom: 0.5rem; }
+    .pub-desc { font-size: 0.845rem; color: #374151; line-height: 1.6; }
+
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.6rem;
+      font-size: 0.79rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pub-link:hover { text-decoration: underline; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.75rem;
+      max-width: 560px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.14);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #f3f4f6;
+      border: none;
+      font-size: 0.82rem;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 0.28rem 0.6rem;
+      border-radius: 6px;
+      line-height: 1.4;
+    }
+
+    .modal-close:hover { background: #e5e7eb; color: var(--text); }
+
+    .modal-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; padding-right: 2.5rem; line-height: 1.3; letter-spacing: -0.02em; }
+    .modal-subtitle { font-size: 0.865rem; color: var(--muted); margin-bottom: 1rem; }
+
+    .modal h4 { font-size: 0.88rem; font-weight: 600; margin: 1.1rem 0 0.5rem; }
+    .modal ul { padding-left: 1rem; font-size: 0.87rem; color: #374151; line-height: 1.65; }
+    .modal ul li { margin-bottom: 0.45rem; }
+
+    .modal-actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.38rem;
+      padding: 0.52rem 1.05rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+
+    .modal-btn:hover { opacity: 0.82; }
+    .modal-btn-dark { background: var(--text); color: #fff; }
+    .modal-btn-blue { background: var(--accent); color: #fff; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.4rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .site-content { padding: 0 1.1rem; }
+      h1 { font-size: 1.55rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.25rem 1.1rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-<!-- Navigation -->
-<nav class="navbar">
-<div class="container">
-<div class="nav-brand">Career Coach</div>
-<ul class="nav-menu">
-<li><a href="#hero">Home</a></li>
-<li><a href="#highlights">About</a></li>
-<li><a href="#packages">Packages</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</div>
+
+<nav>
+  <a class="nav-name" href="#about">Arnav Jain</a>
+  <ul class="nav-links">
+    <li><a href="#about"        class="nav-link active" data-section="about">About</a></li>
+    <li><a href="#experience"   class="nav-link"        data-section="experience">Experience</a></li>
+    <li><a href="#projects"     class="nav-link"        data-section="projects">Projects</a></li>
+    <li><a href="#publications" class="nav-link"        data-section="publications">Publications</a></li>
+  </ul>
+  <div class="nav-icons">
+    <a href="https://github.com/" target="_blank" title="GitHub">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/arnav-jain-6b20e04/" target="_blank" title="LinkedIn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>
+    </a>
+    <a href="https://www.kaggle.com/" target="_blank" title="Kaggle">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.334z"/></svg>
+    </a>
+    <a href="#" title="Resume">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    </a>
+    <a href="mailto:arnav@columbia.edu" title="Email">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </a>
+  </div>
 </nav>
 
-<!-- Hero Section -->
-<section id="hero" class="hero">
-<div class="container hero-content">
-<div class="hero-text">
-<h1>Achieve Your Career Breakthrough</h1>
-<p>Expert career coaching to help you land your dream role, advance faster, or successfully transition into a new industry. Get personalized strategies, confidence, and accountability to reach your career goals.</p>
-<a href="#contact" class="cta-button">Schedule Free Consultation</a>
-</div>
-<div class="hero-image">
-<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=600&fit=crop" alt="Professional Career Coach">
-</div>
-</div>
-</section>
+<div class="site-content">
 
-<!-- Highlights Section -->
-<section id="highlights" class="highlights">
-<div class="container">
-<h2>Why Work With Me?</h2>
-<div class="highlights-grid">
-<div class="highlight-card">
-<div class="highlight-icon">🎯</div>
-<h3>Goal-Oriented Approach</h3>
-<p>Clear strategy tailored to your career objectives and timeline</p>
-</div>
-<div class="highlight-card">
-<div class="highlight-icon">💼</div>
-<h3>Industry Expertise</h3>
-<p>10+ years of experience across multiple industries and roles</p>
-</div>
-<div class="highlight-card">
-<div class="highlight-icon">📈</div>
-<h3>Proven Results</h3>
-<p>95% client satisfaction rate with measurable career growth</p>
-</div>
-<div class="highlight-card">
-<div class="highlight-icon">🤝</div>
-<h3>Personal Support</h3>
-<p>One-on-one coaching with dedicated accountability and guidance</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- ABOUT -->
+  <section id="about">
+    <h1>About</h1>
+    <div class="about-text">
+      <p>Hi! I'm <strong>Arnav Jain</strong>, an incoming MS Data Science student at Columbia University (Fall 2025), currently interning at Eli Lilly building Agentic AI evaluation systems.</p>
+      <p>I build machine learning and data science systems that evaluate how models behave in real environments. My work spans LLM pipelines, RAG systems, multimodal learning, and deep learning across vision, language, and audio — with a focus on how models can be measured, compared, and improved.</p>
+      <p>Lately I've been working on Agentic AI evaluation frameworks and RAG assessment pipelines, designing systems that benchmark AI model performance and reliability in enterprise settings.</p>
+      <p>My research has resulted in <strong>5 peer-reviewed publications</strong> across Elsevier Q1, IEEE, and international conferences. I'm also a <strong>Kaggle Grandmaster</strong>.</p>
+      <p>Open to Summer 2026 data science and machine learning internships. Reach me at <strong>arnav@columbia.edu</strong></p>
+    </div>
+    <a href="#" class="resume-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Resume
+    </a>
+  </section>
 
-<!-- Ratings Section -->
-<section id="ratings" class="ratings">
-<div class="container">
-<h2>Client Testimonials</h2>
-<div class="ratings-grid">
-<div class="rating-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<p>"This coaching helped me land a senior role within 3 months. Highly recommended!"</p>
-<p class="author">- Sarah M.</p>
-</div>
-<div class="rating-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<p>"The resume review and interview prep were game-changers for my career."</p>
-<p class="author">- James K.</p>
-</div>
-<div class="rating-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<p>"Finally got the confidence to negotiate my salary. Worth every penny!"</p>
-<p class="author">- Maria L.</p>
-</div>
-</div>
-</div>
-</section>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h1>Experience</h1>
+    <div class="timeline">
 
-<!-- Packages Section -->
-<section id="packages" class="packages">
-<div class="container">
-<h2>Coaching Packages</h2>
-<div class="packages-grid">
-<!-- Package 1 -->
-<div class="package-card starter">
-<h3>Starter</h3>
-<p class="price">$99</p>
-<ul class="features">
-<li>✓ 1 Coaching Session</li>
-<li>✓ Resume Review</li>
-<li>✓ Career Assessment</li>
-<li>✗ Interview Prep</li>
-<li>✗ Follow-up Support</li>
-</ul>
-<a href="https://topmate.io" target="_blank" class="package-button">Book Now</a>
-</div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header"><span class="tl-title">Agentic AI Intern</span><span class="tl-company">· Eli Lilly and Company</span></div>
+          <div class="tl-date">Jan 2026 — Present · Bengaluru</div>
+          <ul>
+            <li>Developing Agentic AI evaluation and RAG assessment frameworks to benchmark AI model performance and reliability in enterprise systems.</li>
+            <li>Working with LLM-based pipelines to assess agent behavior and output quality across production environments.</li>
+          </ul>
+          <div class="pills">
+            <span class="pill pill-blue">Python</span><span class="pill pill-purple">LangChain</span><span class="pill pill-teal">RAG</span><span class="pill pill-green">LlamaIndex</span><span class="pill pill-amber">Agentic AI</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Package 2 -->
-<div class="package-card professional">
-<div class="popular-badge">POPULAR</div>
-<h3>Professional</h3>
-<p class="price">$299</p>
-<ul class="features">
-<li>✓ 4 Coaching Sessions</li>
-<li>✓ Resume Review</li>
-<li>✓ Interview Prep</li>
-<li>✓ Salary Negotiation</li>
-<li>✓ Email Support</li>
-</ul>
-<a href="https://topmate.io" target="_blank" class="package-button popular-button">Book Now</a>
-</div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header"><span class="tl-title">Research Intern</span><span class="tl-company">· Bureau of Indian Standards</span></div>
+          <div class="tl-date">Mar 2025 — Aug 2025 · New Delhi</div>
+          <ul>
+            <li>Evaluated 30+ symmetric key ciphers (AES-256, RSA-2048, Salsa20, ChaCha20) against IS/ISO/IEC 18033 standards to inform India's national cryptography guidelines.</li>
+            <li>Delivered technical report recommending algorithm selection and deprecation policy updates benchmarked against NIST, CRYPTREC, and ENISA criteria.</li>
+          </ul>
+          <div class="pills">
+            <span class="pill pill-gray">Cryptography</span><span class="pill pill-blue">Python</span><span class="pill pill-green">Research</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Package 3 -->
-<div class="package-card premium">
-<h3>Premium</h3>
-<p class="price">$599</p>
-<ul class="features">
-<li>✓ 12 Coaching Sessions</li>
-<li>✓ Full Career Planning</li>
-<li>✓ Interview Prep</li>
-<li>✓ Job Search Strategy</li>
-<li>✓ Unlimited Support</li>
-</ul>
-<a href="https://topmate.io" target="_blank" class="package-button">Book Now</a>
-</div>
-</div>
-</div>
-</section>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header"><span class="tl-title">Summer Research Intern</span><span class="tl-company">· IIT Ropar</span></div>
+          <div class="tl-date">Jun 2025 — Jul 2025 · Rupnagar</div>
+          <ul>
+            <li>Developed an ensemble deep learning system classifying Indian Classical Ragas by time of day achieving 93.68% accuracy, improving baseline by 3.7%.</li>
+            <li>Engineered audio preprocessing pipeline extracting 56 spectral features (MFCCs, pitch histograms) and introduced a domain-specific "Ma Intensity" metric.</li>
+          </ul>
+          <div class="pills">
+            <span class="pill pill-blue">Python</span><span class="pill pill-purple">PyTorch</span><span class="pill pill-teal">Deep Learning</span><span class="pill pill-amber">Audio ML</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Contact Section -->
-<section id="contact" class="contact">
-<div class="container">
-<h2>Get In Touch</h2>
-<p class="contact-subtitle">Have questions? Let's chat about your career goals!</p>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header"><span class="tl-title">Undergraduate Researcher</span><span class="tl-company">· Thapar Institute of Engineering & Technology</span></div>
+          <div class="tl-date">Mar 2024 — Aug 2024 · Patiala</div>
+          <ul>
+            <li>Developed AFS-MHMD combining vision models (AlexNet, VGG16, ResNeXt-101) with BERT, DistilBERT, RoBERTa for multimodal hateful meme detection.</li>
+            <li>Published at the 27th Irish Machine Vision and Image Processing Conference, Ireland (IMVIP 2025).</li>
+          </ul>
+          <div class="pills">
+            <span class="pill pill-blue">Python</span><span class="pill pill-purple">PyTorch</span><span class="pill pill-green">Hugging Face</span><span class="pill pill-coral">Computer Vision</span><span class="pill pill-teal">NLP</span>
+          </div>
+        </div>
+      </div>
 
-<form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-<input type="hidden" name="access_key" value="66818d8b-131e-41b4-b763-80a2a7dcbf3b">
+    </div>
 
-<div class="form-group">
-<label for="name">Your Name</label>
-<input type="text" id="name" name="name" required placeholder="John Doe">
+    <div class="section-subtitle">Education</div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header"><span class="tl-title">Columbia University</span><span class="tl-company">· New York, US</span></div>
+          <div class="tl-date">MS in Data Science · Aug 2025 — May 2027</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header"><span class="tl-title">Thapar Institute of Engineering & Technology</span><span class="tl-company">· Patiala, IN</span></div>
+          <div class="tl-date">BE Computer Engineering · 2022 — 2026</div>
+          <ul>
+            <li>Relevant coursework: Machine Learning, AI, Data Science, DBMS, Probability & Statistics, Numerical Analysis, OOP</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h1>Projects</h1>
+    <p class="section-desc">A collection of my work in AI, machine learning, and data science.</p>
+    <div class="projects-grid" id="projects-grid"></div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h1>Publications</h1>
+    <p class="section-desc">Peer-reviewed research across ML, computer vision, NLP, and applied AI.</p>
+    <div id="pubs-list"></div>
+  </section>
+
 </div>
 
-<div class="form-group">
-<label for="email">Your Email</label>
-<input type="email" id="email" name="email" required placeholder="john@example.com">
-</div>
-
-<div class="form-group">
-<label for="subject">Subject</label>
-<input type="text" id="subject" name="subject" required placeholder="e.g., Career Change Guidance">
-</div>
-
-<div class="form-group">
-<label for="message">Message</label>
-<textarea id="message" name="message" rows="6" required placeholder="Tell me about your career goals..."></textarea>
-</div>
-
-<button type="submit" class="submit-button">Send Message</button>
-<p class="form-message" id="formMessage"></p>
-</form>
-</div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-<div class="container">
-<p>&copy; 2024 Career Coach. All rights reserved.</p>
-<p>Built with passion to help you succeed</p>
-</div>
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Arnav Jain</span>
+  <span>Made by Arnav Jain</span>
 </footer>
 
-<script src="script.js"></script>
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-box">
+    <button class="modal-close" onclick="closeModal(null,true)">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+  const projects = [
+    { name:"Raga Time-of-Day Classification", desc:"Ensemble deep learning classifying Indian Classical Ragas by Pahar with 93.68% accuracy.", pills:[["Python","blue"],["PyTorch","purple"],["Deep Learning","teal"],["Audio ML","amber"]], details:["Achieved 93.68% accuracy classifying ragas by time of day, improving baseline by 3.7%.","Engineered a 56-feature audio preprocessing pipeline including MFCCs and pitch histograms.","Introduced a domain-specific 'Ma Intensity' metric for improved raga representation.","Research conducted at IIT Ropar."], github:"https://github.com/" },
+    { name:"Breast Cancer Thermal Detection + XAI", desc:"VGG16 pipeline for thermal breast cancer detection with SHAP explainability. Elsevier Q1.", pills:[["Python","blue"],["VGG16","coral"],["SHAP","green"],["TensorFlow","amber"]], details:["Achieved 92.7% accuracy and 99.63% AUROC on the Visual DMR dataset.","Implemented quadrant-wise breast segmentation (UOQ, UIQ, LOQ, LIQ).","Integrated SHAP-based XAI to generate pixel-level thermal attribution maps.","Published in Journal of Thermal Biology — Elsevier Q1 (IF: 3.22), Feb 2026."], github:"https://github.com/", paper:"https://www.sciencedirect.com/science/article/abs/pii/S0306456526000598" },
+    { name:"Multimodal Hateful Meme Detection", desc:"AFS-MHMD: adaptive fusion of vision models and language transformers. Published IMVIP 2025.", pills:[["Python","blue"],["BERT","purple"],["ResNeXt","coral"],["Hugging Face","green"]], details:["Combined AlexNet, VGG16, ResNeXt-101 with BERT, DistilBERT, RoBERTa.","Adaptive fusion via mid-level feature concatenation and model souping.","Achieved 0.5905 accuracy on Facebook AI's Hateful Memes dataset.","Published at IMVIP 2025, Ireland."], github:"https://github.com/", paper:"https://pure.ulster.ac.uk/files/227817636/FinalProceedings_v1.1.pdf#page=149" },
+    { name:"Video Super-Resolution via LDMs", desc:"4× video super-resolution using Latent Diffusion Models. PSNR 29–30 dB. IEEE InC4 2025.", pills:[["Python","blue"],["PyTorch","purple"],["LDM","teal"],["VQGAN","amber"]], details:["4× super-resolution processing frames in compressed latent space via VQGAN autoencoder.","PSNR 29–30 dB and SSIM > 0.85 across 200 frames.","Low LPIPS scores confirming strong perceptual quality and temporal consistency.","Published at IEEE InC4 2025."], github:"https://github.com/", paper:"https://ieeexplore.ieee.org/document/11256411/" },
+    { name:"Transformer Evaluation Framework", desc:"TOPSIS-based multi-criteria framework comparing transformer architectures on semantic similarity.", pills:[["Python","blue"],["NLP","teal"],["TOPSIS","gray"],["Transformers","purple"]], details:["Evaluated LaBSE, Nomic-Embed-text, and Stella-1.5B on semantic sentence similarity.","TOPSIS-based multi-criteria ranking across syntactic and semantic dimensions.","Addresses limitations of cosine and Jaccard similarity in NLP.","Published at IEEE InC4 2025."], github:"https://github.com/", paper:"https://ieeexplore.ieee.org/abstract/document/11256279" },
+    { name:"NMT Model Evaluator", desc:"Multi-criteria TOPSIS comparison of 5 NMT models for English-French translation.", pills:[["Python","blue"],["NLP","teal"],["BLEU","green"],["TOPSIS","gray"]], details:["Compared five pre-trained NMT models across BLEU, ROUGE, execution time, and model size.","Demonstrated efficient architectures outperform raw computational scale in real-world translation.","Published at IEEE InC4 2025."], github:"https://github.com/", paper:"https://ieeexplore.ieee.org/abstract/document/11256193" }
+  ];
+
+  const publications = [
+    { title:"Thermal Signatures in Breast Cancer: Deciphering Latent Biomarkers through Deep Learning and Explainable AI", venue:"Journal of Thermal Biology — Elsevier Q1 (IF: 3.22) · Feb 2026", desc:"VGG16-based pipeline for breast cancer detection using thermal imaging achieving 92.7% accuracy and 99.63% AUROC. SHAP-based XAI generates pixel-level attribution maps revealing thermal anomalies.", url:"https://www.sciencedirect.com/science/article/abs/pii/S0306456526000598" },
+    { title:"AFS-MHMD: Adaptive Fusion Strategies for Multi-modal Hateful Meme Detection", venue:"IMVIP 2025, Ireland · Sep 2025", desc:"Training-free multimodal framework combining vision models with transformer encoders. Model souping achieves 0.5905 accuracy on Facebook AI's Hateful Memes dataset.", url:"https://pure.ulster.ac.uk/files/227817636/FinalProceedings_v1.1.pdf#page=149" },
+    { title:"Machine Learning with Latent Space for Super Resolution Temporal Reconstruction in Video Enhancement", venue:"IEEE InC4 2025", desc:"4× video super-resolution via LDMs. VQGAN-based autoencoder with denoising UNet achieves PSNR 29–30 dB and SSIM > 0.85 across 200 frames.", url:"https://ieeexplore.ieee.org/document/11256411/" },
+    { title:"A Systematic Framework for Evaluating Transformer Architectures in Semantic Sentence Similarity", venue:"IEEE InC4 2025", desc:"TOPSIS-based multi-criteria framework comparing LaBSE, Nomic-Embed-text, and Stella-1.5B across syntactic and semantic similarity dimensions.", url:"https://ieeexplore.ieee.org/abstract/document/11256279" },
+    { title:"Machine Learning Pre-trained Language Models for English-French Neural Machine Translation using TOPSIS", venue:"IEEE InC4 2025", desc:"Evaluation of five NMT models showing efficient architectures outperform raw scale in real-world translation tasks.", url:"https://ieeexplore.ieee.org/abstract/document/11256193" }
+  ];
+
+  const GH = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>`;
+  const EXT = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+
+  function renderProjects() {
+    document.getElementById('projects-grid').innerHTML = projects.map((p,i) => `
+      <div class="proj-card" onclick="openModal(${i})">
+        <div>
+          <div class="proj-name">${p.name}</div>
+          <div class="proj-desc">${p.desc}</div>
+        </div>
+        <div class="proj-card-footer">
+          <div class="pills" style="margin-top:0.5rem">
+            ${p.pills.slice(0,3).map(([t,c])=>`<span class="pill pill-${c}">${t}</span>`).join('')}
+            ${p.pills.length>3?`<span class="pill pill-gray">+${p.pills.length-3}</span>`:''}
+          </div>
+          <span class="proj-gh">${GH}</span>
+        </div>
+      </div>`).join('');
+  }
+
+  function renderPubs() {
+    document.getElementById('pubs-list').innerHTML = publications.map(p => `
+      <div class="pub-item">
+        <div class="pub-title">${p.title}</div>
+        <div class="pub-venue">${p.venue}</div>
+        <div class="pub-desc">${p.desc}</div>
+        <a href="${p.url}" target="_blank" class="pub-link">${EXT} View paper</a>
+      </div>`).join('');
+  }
+
+  function openModal(i) {
+    const p = projects[i];
+    document.getElementById('modal-content').innerHTML = `
+      <div class="modal-title">${p.name}</div>
+      <div class="modal-subtitle">${p.desc}</div>
+      <div class="pills">${p.pills.map(([t,c])=>`<span class="pill pill-${c}">${t}</span>`).join('')}</div>
+      <h4>Project Details</h4>
+      <ul>${p.details.map(d=>`<li>${d}</li>`).join('')}</ul>
+      <div class="modal-actions">
+        <a href="${p.github}" target="_blank" class="modal-btn modal-btn-dark">${GH} View on GitHub</a>
+        ${p.paper?`<a href="${p.paper}" target="_blank" class="modal-btn modal-btn-blue">${EXT} View Paper</a>`:''}
+      </div>`;
+    document.getElementById('modal-overlay').classList.add('open');
+  }
+
+  function closeModal(e, force) {
+    if (force || (e && e.target === document.getElementById('modal-overlay')))
+      document.getElementById('modal-overlay').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(null,true); });
+
+  /* SCROLL SPY */
+  const SECTIONS = ['about','experience','projects','publications'];
+
+  function updateNav() {
+    let current = SECTIONS[0];
+    SECTIONS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 70) current = id;
+    });
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.classList.toggle('active', a.dataset.section === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  renderProjects();
+  renderPubs();
+  updateNav();
+</script>
 </body>
 </html>
