@@ -98,26 +98,27 @@
     section:last-of-type { border-bottom: none; }
 
     h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
       margin-bottom: 0.888889em;
       line-height: 1.11111;
       color: oklch(20.5% 0 0);
     }
 
     /* ABOUT */
-    .about-text { font-size: 1rem; font-weight: 400; color: oklch(37.1% 0 0); line-height: 1.75; max-width: none; text-align: justify; }
+    .about-text { font-size: 1rem; font-weight: 400; color: oklch(37.1% 0 0); line-height: 1.75; max-width: 85%; text-align: justify; margin-right: auto; }
     .about-text p { margin-top: 1.25em; margin-bottom: 1.25em; }
     .about-text p:first-child { margin-top: 0; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-text strong { color: var(--text); font-weight: 600; }
 
     .resume-btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      margin-top: 2rem;
+      margin: 2rem auto 0;
       padding: 0.75rem 1.5rem;
       border: 1px solid rgba(84, 162, 255, 0.3);
       border-radius: 12px;
