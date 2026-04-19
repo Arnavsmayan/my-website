@@ -18,12 +18,23 @@
       --nav-active-bg: #0a0a0a;
       --nav-active-text: #ffffff;
       --accent: #2563eb;
+      
+      /* Tailwind CSS Variables */
+      --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --color-neutral-100: oklch(97% 0 0);
+      --color-neutral-700: oklch(37.1% 0 0);
+      --color-neutral-800: oklch(26.9% 0 0);
+      --color-neutral-900: oklch(20.5% 0 0);
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --tracking-tight: -0.025em;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text);
       font-size: 16px;
@@ -48,8 +59,8 @@
 
     .nav-name {
       font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: var(--tracking-tight);
       text-decoration: none;
       color: var(--text);
     }
@@ -104,11 +115,11 @@
       letter-spacing: -0.03em;
       margin-bottom: 0.888889em;
       line-height: 1.11111;
-      color: oklch(20.5% 0 0);
+      color: var(--color-neutral-900);
     }
 
     /* ABOUT */
-    .about-text { font-size: 0.97rem; font-weight: 500; color: oklch(37.1% 0 0); line-height: 1.75; max-width: 85%; text-align: justify; margin-right: auto; }
+    .about-text { font-size: 0.97rem; font-weight: 500; color: var(--color-neutral-700); line-height: 1.75; max-width: 85%; text-align: justify; margin-right: auto; }
     .about-text p { margin-top: 1.25em; margin-bottom: 1.25em; }
     .about-text p:first-child { margin-top: 0; }
     .about-text p:last-child { margin-bottom: 0; }
