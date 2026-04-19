@@ -87,7 +87,7 @@
     .nav-icons a:hover { color: var(--text); }
 
     /* LAYOUT */
-    .site-content { max-width: 48rem; margin: 0 auto; padding: 0 1rem; }
+    .site-content { max-width: 768px; margin: 0 auto; padding: 0 1rem; }
 
     section {
       padding-top: 2.5rem;
@@ -98,16 +98,17 @@
     section:last-of-type { border-bottom: none; }
 
     h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-size: 2.25rem;
+      font-weight: 800;
       letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      line-height: 1.11;
     }
 
     /* ABOUT */
-    .about-text { font-size: 1rem; font-weight: 400; color: #374151; line-height: 1.7; max-width: none; text-align: justify; }
-    .about-text p { margin-bottom: 1.25rem; }
+    .about-text { font-size: 1rem; font-weight: 400; color: #4b5563; line-height: 1.75; max-width: none; text-align: justify; }
+    .about-text p { margin-top: 1.25em; margin-bottom: 1.25em; }
+    .about-text p:first-child { margin-top: 0; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-text strong { color: var(--text); font-weight: 600; }
 
@@ -117,18 +118,22 @@
       gap: 0.5rem;
       margin-top: 2rem;
       padding: 0.75rem 1.5rem;
-      border: 1px solid rgba(96, 165, 250, 0.3);
+      border: 1px solid rgba(84, 162, 255, 0.3);
       border-radius: 12px;
       background: rgba(59, 130, 246, 0.1);
       backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: var(--text);
       text-decoration: none;
       font-size: 0.95rem;
       font-weight: 500;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .resume-btn:hover { background: rgba(59, 130, 246, 0.15); transform: translateY(-2px); }
+    .resume-btn:hover { 
+      background: rgba(59, 130, 246, 0.15);
+      transform: translateY(-4px);
+    }
 
     /* TIMELINE */
     .timeline { position: relative; }
