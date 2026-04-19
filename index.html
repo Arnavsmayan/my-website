@@ -366,7 +366,7 @@
     <li><a href="#about"        class="nav-link active" data-section="about">About</a></li>
     <li><a href="#experience"   class="nav-link"        data-section="experience">Experience</a></li>
     <li><a href="#projects"     class="nav-link"        data-section="projects">Projects</a></li>
-    <li><a href="#publications" class="nav-link"        data-section="publications">Publications</a></li>
+    <li><a href="#blog" class="nav-link"        data-section="blog">Blog</a></li>
   </ul>
   <div class="nav-icons">
     <a href="https://github.com/Arnavsmayan" target="_blank" title="GitHub">
@@ -503,9 +503,9 @@
     <div class="projects-grid" id="projects-grid"></div>
   </section>
 
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <h1>Publications</h1>
+  <!-- BLOG -->
+  <section id="blog">
+    <h1>Blog</h1>
     <p class="section-desc">Peer-reviewed research across ML, computer vision, NLP, and applied AI.</p>
     <div id="pubs-list"></div>
   </section>
@@ -597,7 +597,7 @@
   document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(null,true); });
 
   /* SCROLL SPY */
-  const SECTIONS = ['about','experience','projects','publications'];
+  const SECTIONS = ['about','experience','projects','blog'];
 
   function updateNav() {
     let current = SECTIONS[0];
