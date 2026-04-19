@@ -87,47 +87,48 @@
     .nav-icons a:hover { color: var(--text); }
 
     /* LAYOUT */
-    .site-content { max-width: 680px; margin: 0 auto; padding: 0 2rem; }
+    .site-content { max-width: 48rem; margin: 0 auto; padding: 0 1rem; }
 
     section {
-      padding-top: 60px;
-      padding-bottom: 72px;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--border);
     }
 
     section:last-of-type { border-bottom: none; }
 
     h1 {
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.2rem;
-      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
     }
 
     /* ABOUT */
-    .about-text { font-size: 0.95rem; font-weight: 400; color: #374151; line-height: 1.75; max-width: 560px; }
-    .about-text p { margin-bottom: 1rem; }
+    .about-text { font-size: 1rem; font-weight: 400; color: #374151; line-height: 1.7; max-width: none; text-align: justify; }
+    .about-text p { margin-bottom: 1.25rem; }
     .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-text strong { color: var(--text); font-weight: 600; }
 
     .resume-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      margin-top: 1.75rem;
-      padding: 0.55rem 1.2rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--card-bg);
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.1);
+      backdrop-filter: blur(12px);
       color: var(--text);
       text-decoration: none;
-      font-size: 0.84rem;
+      font-size: 0.95rem;
       font-weight: 500;
-      transition: background 0.15s, border-color 0.15s;
+      transition: all 0.2s ease;
     }
 
-    .resume-btn:hover { background: #f9fafb; border-color: #d1d5db; }
+    .resume-btn:hover { background: rgba(59, 130, 246, 0.15); transform: translateY(-2px); }
 
     /* TIMELINE */
     .timeline { position: relative; }
