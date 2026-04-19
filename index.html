@@ -216,34 +216,32 @@
     }
 
     /* ABOUT */
-    .about-text { font-size: 0.97rem; font-weight: 500; color: var(--color-neutral-700); line-height: 1.75; max-width: 85%; text-align: justify; margin-right: auto; }
+    .about-text { font-size: 0.97rem; font-weight: 400; color: var(--color-neutral-700); line-height: 1.75; max-width: 85%; text-align: justify; margin-right: auto; }
     .about-text p { margin-top: 1.25em; margin-bottom: 1.25em; }
     .about-text p:first-child { margin-top: 0; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-text strong { color: var(--text); font-weight: 600; }
 
     .resume-btn {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.5rem;
       margin: 1.5rem auto 1.5rem;
-      padding: 0.65rem 1.4rem;
-      border: 1px solid rgba(84, 162, 255, 0.3);
-      border-radius: 10px;
-      background: rgba(59, 130, 246, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      color: var(--text);
+      padding: 0.75rem 1.5rem;
+      border: 1px solid color-mix(in oklab, var(--color-blue-400) 30%, transparent);
+      border-radius: 0.75rem;
+      background: color-mix(in oklab, var(--color-blue-500) 10%, transparent);
+      backdrop-filter: blur(var(--blur-md));
+      -webkit-backdrop-filter: blur(var(--blur-md));
+      color: var(--color-neutral-900);
       text-decoration: none;
       font-size: 0.92rem;
       font-weight: 500;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      width: fit-content;
+      transition: all 0.2s var(--default-transition-timing-function);
     }
 
-    .resume-btn:hover { 
-      background: rgba(59, 130, 246, 0.15);
+    .resume-btn:hover {
+      background: color-mix(in oklab, var(--color-blue-500) 15%, transparent);
       transform: translateY(-4px);
     }
 
