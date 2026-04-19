@@ -223,16 +223,16 @@
       flex-direction: column;
       position: fixed;
       top: 54px;
+      left: 0;
       right: 0;
-      width: 75vw;
-      max-width: 320px;
+      width: 100%;
       height: calc(100vh - 54px);
       background: #ffffff;
-      border-left: 1px solid var(--border);
-      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       overflow-y: auto;
       z-index: 999;
-      padding: 1.2rem 0;
+      padding: 1.2rem 1.5rem;
       gap: 0;
     }
 
@@ -269,20 +269,40 @@
     .nav-menu a[href*="kaggle"],
     .nav-menu a[href*="resume"],
     .nav-menu a[href*="mailto"] {
-      border-top: 1px solid var(--border);
-      margin-top: auto;
-      padding-top: 0.75rem;
-      padding-bottom: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-left: 1.5rem;
-      margin-right: 1.5rem;
+      display: none;
     }
 
-    .nav-menu a[href*="github"]:first-of-type {
+    /* Social icons container - horizontal line */
+    .nav-menu-icons {
+      display: flex;
+      gap: 1.2rem;
       margin-top: auto;
+      padding-top: 1.2rem;
       border-top: 1px solid var(--border);
-      padding-top: 0.8rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu-icons a {
+      padding: 0.5rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border-radius: 0.5rem;
+      transition: all 0.15s;
+      color: var(--muted);
+    }
+
+    .nav-menu-icons a:hover {
+      background: #f3f4f6;
+      color: var(--text);
+    }
+
+    .nav-menu-icons svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* LAYOUT */
