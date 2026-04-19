@@ -18,16 +18,115 @@
       --nav-active-bg: #0a0a0a;
       --nav-active-text: #ffffff;
       --accent: #2563eb;
+      
+      /* Tailwind CSS Design System */
+      --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      
+      /* Colors - Full Palette */
+      --color-amber-100: oklch(96.2% .059 95.617);
+      --color-amber-200: oklch(92.4% .12 95.746);
+      --color-amber-800: oklch(47.3% .137 46.201);
+      --color-emerald-100: oklch(95% .052 163.051);
+      --color-emerald-200: oklch(90.5% .093 164.15);
+      --color-emerald-800: oklch(43.2% .095 166.913);
+      --color-teal-100: oklch(95.3% .051 180.801);
+      --color-teal-200: oklch(91% .096 180.426);
+      --color-teal-800: oklch(43.7% .078 188.216);
+      --color-sky-100: oklch(95.1% .026 236.824);
+      --color-sky-200: oklch(90.1% .058 230.902);
+      --color-sky-800: oklch(44.3% .11 240.79);
+      --color-blue-50: oklch(97% .014 254.604);
+      --color-blue-100: oklch(93.2% .032 255.585);
+      --color-blue-200: oklch(88.2% .059 254.128);
+      --color-blue-400: oklch(70.7% .165 254.624);
+      --color-blue-500: oklch(62.3% .214 259.815);
+      --color-blue-800: oklch(42.4% .199 265.638);
+      --color-purple-100: oklch(94.6% .033 307.174);
+      --color-purple-200: oklch(90.2% .063 306.703);
+      --color-purple-800: oklch(43.8% .218 303.724);
+      --color-rose-100: oklch(94.1% .03 12.58);
+      --color-rose-200: oklch(89.2% .058 10.001);
+      --color-rose-800: oklch(45.5% .188 13.697);
+      --color-neutral-100: oklch(97% 0 0);
+      --color-neutral-200: oklch(92.2% 0 0);
+      --color-neutral-300: oklch(87% 0 0);
+      --color-neutral-400: oklch(70.8% 0 0);
+      --color-neutral-500: oklch(55.6% 0 0);
+      --color-neutral-600: oklch(43.9% 0 0);
+      --color-neutral-700: oklch(37.1% 0 0);
+      --color-neutral-800: oklch(26.9% 0 0);
+      --color-neutral-900: oklch(20.5% 0 0);
+      --color-black: #000;
+      --color-white: #fff;
+      
+      /* Spacing & Layout */
+      --spacing: 0.25rem;
+      --container-2xl: 42rem;
+      --container-3xl: 48rem;
+      --container-6xl: 72rem;
+      
+      /* Typography Scale */
+      --text-xs: 0.75rem;
+      --text-xs--line-height: calc(1 / 0.75);
+      --text-sm: 0.875rem;
+      --text-sm--line-height: calc(1.25 / 0.875);
+      --text-lg: 1.125rem;
+      --text-lg--line-height: calc(1.75 / 1.125);
+      --text-xl: 1.25rem;
+      --text-xl--line-height: calc(1.75 / 1.25);
+      --text-2xl: 1.5rem;
+      --text-2xl--line-height: calc(2 / 1.5);
+      --text-3xl: 1.875rem;
+      --text-3xl--line-height: calc(2.25 / 1.875);
+      
+      /* Typography */
+      --font-weight-medium: 500;
+      --font-weight-semibold: 600;
+      --tracking-tight: -0.025em;
+      --tracking-wide: 0.025em;
+      --leading-relaxed: 1.625;
+      
+      /* Borders & Radius */
+      --radius-md: 0.375rem;
+      --radius-lg: 0.5rem;
+      --radius-xl: 0.75rem;
+      --radius-2xl: 1rem;
+      
+      /* Effects */
+      --blur-sm: 8px;
+      --blur-md: 12px;
+      --default-transition-duration: 0.15s;
+      --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Prose Typography */
+      --tw-prose-body: oklch(37.1% 0 0);
+      --tw-prose-headings: oklch(20.5% 0 0);
+      --tw-prose-lead: oklch(43.9% 0 0);
+      --tw-prose-links: oklch(20.5% 0 0);
+      --tw-prose-bold: oklch(20.5% 0 0);
+      --tw-prose-counters: oklch(55.6% 0 0);
+      --tw-prose-bullets: oklch(87% 0 0);
+      --tw-prose-hr: oklch(92.2% 0 0);
+      --tw-prose-quotes: oklch(20.5% 0 0);
+      --tw-prose-quote-borders: oklch(92.2% 0 0);
+      --tw-prose-captions: oklch(55.6% 0 0);
+      --tw-prose-kbd: oklch(20.5% 0 0);
+      --tw-prose-code: oklch(20.5% 0 0);
+      --tw-prose-pre-code: oklch(92.2% 0 0);
+      --tw-prose-pre-bg: oklch(26.9% 0 0);
+      --tw-prose-th-borders: oklch(87% 0 0);
+      --tw-prose-td-borders: oklch(92.2% 0 0);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text);
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
     /* NAV */
@@ -47,9 +146,9 @@
     }
 
     .nav-name {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      font-size: 1.3125rem;
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-tight);
       text-decoration: none;
       color: var(--text);
     }
@@ -74,7 +173,7 @@
       font-weight: 500;
     }
 
-    .nav-icons { display: flex; align-items: center; gap: 0.65rem; }
+    .nav-icons { display: flex; align-items: center; gap: 1.1rem; }
 
     .nav-icons a {
       color: var(--muted);
@@ -82,52 +181,190 @@
       transition: color 0.15s;
       display: flex;
       align-items: center;
+      font-weight: 600;
     }
 
     .nav-icons a:hover { color: var(--text); }
 
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      gap: 0.35rem;
+      padding: 0.25rem;
+    }
+
+    .hamburger span {
+      width: 1.3rem;
+      height: 0.15rem;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(0.6rem, 0.65rem);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(0.5rem, -0.55rem);
+    }
+
+    /* MOBILE NAV MENU */
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 54px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: calc(100vh - 54px);
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      overflow-y: auto;
+      z-index: 999;
+      padding: 1.2rem 1.5rem;
+      gap: 0;
+    }
+
+    .nav-menu.open {
+      display: flex;
+    }
+
+    .nav-menu a {
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 400;
+      display: block;
+      transition: all 0.15s;
+      margin: 0 0.8rem;
+      border-radius: 0.75rem;
+    }
+
+    .nav-menu a.active {
+      background: var(--text);
+      color: #ffffff;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      padding: 0.95rem 1.3rem;
+    }
+
+    .nav-menu a:hover:not(.active) {
+      background: #f3f4f6;
+    }
+
+    .nav-menu a[href*="github"],
+    .nav-menu a[href*="linkedin"],
+    .nav-menu a[href*="kaggle"],
+    .nav-menu a[href*="resume"],
+    .nav-menu a[href*="mailto"] {
+      display: none;
+    }
+
+    /* Social icons container - horizontal line */
+    .nav-menu-icons {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: auto;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border);
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu-icons a {
+      padding: 0.5rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border-radius: 0.5rem;
+      transition: all 0.15s;
+      color: var(--muted);
+    }
+
+    .nav-menu-icons a:hover {
+      background: #f3f4f6;
+      color: var(--text);
+    }
+
+    .nav-menu-icons svg {
+      width: 20px;
+      height: 20px;
+    }
+
     /* LAYOUT */
-    .site-content { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+    .site-content { max-width: 768px; margin: 0 auto; padding: 0 1rem; }
 
     section {
-      padding-top: 88px;
-      padding-bottom: 88px;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
       border-bottom: 1px solid var(--border);
     }
 
     section:last-of-type { border-bottom: none; }
 
     h1 {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    /* ABOUT SECTION */
+    #about h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
       letter-spacing: -0.03em;
-      margin-bottom: 2rem;
-      line-height: 1.15;
+      margin-bottom: 0.888889em;
+      line-height: 1.11111;
+      color: var(--color-neutral-900);
     }
 
     /* ABOUT */
-    .about-text { font-size: 0.94rem; color: #374151; line-height: 1.8; max-width: 620px; }
-    .about-text p { margin-bottom: 1rem; }
+    .about-text { font-size: 0.95rem; font-weight: 400; color: var(--color-neutral-700); line-height: 1.75; max-width: 80%; text-align: justify; margin-right: 2.5rem; }
+    .about-text p { margin-top: 1.25em; margin-bottom: 1.25em; }
+    .about-text p:first-child { margin-top: 0; }
     .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--text); font-weight: 500; }
+    .about-text strong { color: var(--text); font-weight: 600; }
 
     .resume-btn {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 0.45rem;
-      margin-top: 1.75rem;
-      padding: 0.55rem 1.2rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--card-bg);
-      color: var(--text);
+      justify-content: center;
+      width: fit-content;
+      gap: 0.5rem;
+      margin: 1.5rem auto;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid color-mix(in oklab, var(--color-blue-400) 30%, transparent);
+      border-radius: 0.75rem;
+      background: color-mix(in oklab, var(--color-blue-500) 10%, transparent);
+      backdrop-filter: blur(var(--blur-md));
+      -webkit-backdrop-filter: blur(var(--blur-md));
+      color: var(--color-neutral-900);
       text-decoration: none;
-      font-size: 0.84rem;
+      font-size: 0.92rem;
       font-weight: 500;
-      transition: background 0.15s, border-color 0.15s;
+      transition: all 0.2s var(--default-transition-timing-function);
     }
 
-    .resume-btn:hover { background: #f9fafb; border-color: #d1d5db; }
+    .resume-btn:hover {
+      background: color-mix(in oklab, var(--color-blue-500) 15%, transparent);
+      transform: translateY(-4px);
+    }
 
     /* TIMELINE */
     .timeline { position: relative; }
@@ -349,12 +586,68 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-icons { display: none; }
       nav { padding: 0 1rem; }
       .site-content { padding: 0 1.1rem; }
-      h1 { font-size: 1.55rem; }
+      section { padding-top: 2rem; padding-bottom: 2rem; }
+      .about-text { font-size: 0.92rem; max-width: 100%; margin-right: 0; }
+      #about h1 { font-size: 2.25rem; }
+      .resume-btn { font-size: 0.88rem; padding: 0.7rem 1.3rem; margin: 1rem auto; }
+      h1 { font-size: 1.75rem; margin-bottom: 0.8rem; }
+      .section-desc { font-size: 0.9rem; }
+      .tl-header { font-size: 0.9rem; }
+      .tl-card { padding: 0.9rem 1rem; }
+      .pills { gap: 0.25rem; }
+      .pill { font-size: 0.6rem; padding: 0.15rem 0.55rem; }
+      .proj-name { font-size: 0.95rem; }
+      .proj-desc { font-size: 0.85rem; }
+      .pub-title { font-size: 0.95rem; }
+      .pub-venue { font-size: 0.8rem; }
+      .pub-desc { font-size: 0.85rem; }
+      footer { padding: 1rem 1.1rem; font-size: 0.75rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; height: 54px; }
+      .nav-name { font-size: 1.1rem; }
+      .site-content { padding: 0 1rem; }
+      h1 { font-size: 1.55rem; margin-bottom: 0.7rem; }
       .projects-grid { grid-template-columns: 1fr; }
-      footer { padding: 1.25rem 1.1rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+      section { padding-top: 1.8rem; padding-bottom: 1.8rem; }
+      .about-text { font-size: 0.9rem; line-height: 1.65; }
+      .about-text p { margin-top: 1rem; margin-bottom: 1rem; }
+      #about h1 { font-size: 2rem; margin-bottom: 1rem; }
+      .resume-btn { font-size: 0.85rem; padding: 0.65rem 1.2rem; margin: 0.8rem auto; gap: 0.35rem; }
+      .resume-btn svg { width: 11px; height: 11px; }
+      .tl-item { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+      .tl-dot { left: -4px; top: 12px; width: 9px; height: 9px; }
+      .tl-header { flex-wrap: wrap; gap: 0.3rem; }
+      .tl-title { font-size: 0.9rem; }
+      .tl-company { font-size: 0.8rem; }
+      .tl-date { font-size: 0.72rem; margin-bottom: 0.5rem; }
+      .tl-card ul { font-size: 0.82rem; line-height: 1.55; padding-left: 0.8rem; }
+      .tl-card ul li { margin-bottom: 0.3rem; }
+      .pills { gap: 0.2rem; margin-top: 0.6rem; }
+      .pill { font-size: 0.55rem; padding: 0.12rem 0.5rem; letter-spacing: 0.02em; }
+      .proj-name { font-size: 0.92rem; }
+      .proj-desc { font-size: 0.8rem; line-height: 1.4; }
+      .proj-card { padding: 0.9rem; border-radius: 0.5rem; }
+      .section-subtitle { font-size: 1rem; margin-top: 2rem; margin-bottom: 0.8rem; }
+      .pub-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+      .pub-item:last-child { border-bottom: none; }
+      .pub-title { font-size: 0.92rem; margin-bottom: 0.3rem; }
+      .pub-venue { font-size: 0.75rem; margin-bottom: 0.4rem; }
+      .pub-desc { font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.5rem; }
+      .pub-link { font-size: 0.8rem; }
+      footer { padding: 1rem; flex-direction: column; gap: 0.3rem; text-align: center; font-size: 0.7rem; }
+      .modal { max-width: 90vw; max-height: 85vh; padding: 1.2rem; }
+      .modal-title { font-size: 1rem; }
+      .modal-subtitle { font-size: 0.8rem; }
+      .modal h4 { font-size: 0.82rem; }
+      .modal ul { font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -368,6 +661,22 @@
     <li><a href="#projects"     class="nav-link"        data-section="projects">Projects</a></li>
     <li><a href="#publications" class="nav-link"        data-section="publications">Publications</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-menu" id="nav-menu">
+    <a href="#about" class="nav-link active" data-section="about" onclick="closeMenu()">About</a>
+    <a href="#experience" class="nav-link" data-section="experience" onclick="closeMenu()">Experience</a>
+    <a href="#projects" class="nav-link" data-section="projects" onclick="closeMenu()">Projects</a>
+    <a href="#publications" class="nav-link" data-section="publications" onclick="closeMenu()">Publications</a>
+    <a href="https://github.com/Arnavsmayan" target="_blank" title="GitHub">GitHub</a>
+    <a href="https://www.linkedin.com/in/arnav-jain-6b20e04/" target="_blank" title="LinkedIn">LinkedIn</a>
+    <a href="https://www.kaggle.com/smayanj" target="_blank" title="Kaggle">Kaggle</a>
+    <a href="#" title="Resume">Resume</a>
+    <a href="mailto:aj3481@columbia.edu" title="Email">Email</a>
+  </div>
   <div class="nav-icons">
     <a href="https://github.com/Arnavsmayan" target="_blank" title="GitHub">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -379,10 +688,10 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.334z"/></svg>
     </a>
     <a href="#" title="Resume">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
     </a>
-    <a href="mailto:arnav@columbia.edu" title="Email">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    <a href="mailto:aj3481@columbia.edu" title="Email">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
     </a>
   </div>
 </nav>
@@ -393,11 +702,10 @@
   <section id="about">
     <h1>About</h1>
     <div class="about-text">
-      <p>Hi! I'm <strong>Arnav Jain</strong>, an incoming MS Data Science student at Columbia University (Fall 2025), currently interning at Eli Lilly building Agentic AI evaluation systems.</p>
+      <p>Hi! I'm <strong>Arnav Jain</strong>, a current student in Columbia's MS Data Science program, currently interning at Eli Lilly building Agentic AI evaluation systems.</p>
       <p>I build machine learning and data science systems that evaluate how models behave in real environments. My work spans LLM pipelines, RAG systems, multimodal learning, and deep learning across vision, language, and audio — with a focus on how models can be measured, compared, and improved.</p>
-      <p>Lately I've been working on Agentic AI evaluation frameworks and RAG assessment pipelines, designing systems that benchmark AI model performance and reliability in enterprise settings.</p>
       <p>My research has resulted in <strong>5 peer-reviewed publications</strong> across Elsevier Q1, IEEE, and international conferences. I'm also a <strong>Kaggle Grandmaster</strong>.</p>
-      <p>Open to Summer 2026 data science and machine learning internships. Reach me at <strong>arnav@columbia.edu</strong></p>
+      <p>Open to Summer 2026 data science and machine learning internships. Reach me at <strong>aj3481@columbia.edu</strong></p>
     </div>
     <a href="#" class="resume-btn">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -504,7 +812,7 @@
     <div class="projects-grid" id="projects-grid"></div>
   </section>
 
-  <!-- PUBLICATIONS -->
+  <!-- BLOG -->
   <section id="publications">
     <h1>Publications</h1>
     <p class="section-desc">Peer-reviewed research across ML, computer vision, NLP, and applied AI.</p>
@@ -528,6 +836,61 @@
 </div>
 
 <script>
+  /* MOBILE MENU TOGGLE */
+  let menuBackdrop = null;
+
+  function toggleMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('nav-menu');
+    hamburger.classList.toggle('open');
+    menu.classList.toggle('open');
+    
+    // Create or remove backdrop
+    if (menu.classList.contains('open')) {
+      if (!menuBackdrop) {
+        menuBackdrop = document.createElement('div');
+        menuBackdrop.style.cssText = `
+          position: fixed;
+          top: 54px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.3);
+          z-index: 98;
+          cursor: pointer;
+        `;
+        menuBackdrop.onclick = closeMenu;
+        document.body.appendChild(menuBackdrop);
+      }
+    } else {
+      if (menuBackdrop) {
+        menuBackdrop.remove();
+        menuBackdrop = null;
+      }
+    }
+  }
+
+  function closeMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('nav-menu');
+    hamburger.classList.remove('open');
+    menu.classList.remove('open');
+    
+    if (menuBackdrop) {
+      menuBackdrop.remove();
+      menuBackdrop = null;
+    }
+  }
+
+  /* Close menu when clicking outside */
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
   const projects = [
     { name:"Raga Time-of-Day Classification", desc:"Ensemble deep learning classifying Indian Classical Ragas by Pahar with 93.68% accuracy.", pills:[["Python","blue"],["PyTorch","purple"],["Deep Learning","teal"],["Audio ML","amber"]], details:["Achieved 93.68% accuracy classifying ragas by time of day, improving baseline by 3.7%.","Engineered a 56-feature audio preprocessing pipeline including MFCCs and pitch histograms.","Introduced a domain-specific 'Ma Intensity' metric for improved raga representation.","Research conducted at IIT Ropar."], github:"https://github.com/Arnavsmayan" },
     { name:"Breast Cancer Thermal Detection + XAI", desc:"VGG16 pipeline for thermal breast cancer detection with SHAP explainability. Elsevier Q1.", pills:[["Python","blue"],["VGG16","coral"],["SHAP","green"],["TensorFlow","amber"]], details:["Achieved 92.7% accuracy and 99.63% AUROC on the Visual DMR dataset.","Implemented quadrant-wise breast segmentation (UOQ, UIQ, LOQ, LIQ).","Integrated SHAP-based XAI to generate pixel-level thermal attribution maps.","Published in Journal of Thermal Biology — Elsevier Q1 (IF: 3.22), Feb 2026."], github:"https://github.com/", paper:"https://www.sciencedirect.com/science/article/abs/pii/S0306456526000598" },
