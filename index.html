@@ -446,8 +446,8 @@
     .section-desc { font-size: 0.88rem; color: var(--muted); margin-top: -1.5rem; margin-bottom: 1.75rem; }
 
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-direction: column;
       gap: 0.8rem;
     }
 
@@ -676,7 +676,7 @@
     <li><a href="#about"        class="nav-link active" data-section="about">About</a></li>
     <li><a href="#experience"   class="nav-link"        data-section="experience">Experience</a></li>
     <li><a href="#projects"     class="nav-link"        data-section="projects">Projects</a></li>
-    <li><a href="#publications" class="nav-link"        data-section="publications">Publications</a></li>
+    <li><a href="#publications" class="nav-link"        data-section="publications">Select Publications</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
@@ -723,7 +723,7 @@
       <p>Hi! I'm <strong>Arnav Jain</strong>, an MS Data Science student at <strong>Columbia University</strong>.</p>
       <p>I recently completed a data science internship at <strong>Eli Lilly</strong>, where I built AI evaluation and autonomous testing systems that reduced evaluation cycles from hours to under 5 minutes and automated large-scale QA workflows.</p>
       <p>My research has also been published in peer-reviewed journals and international conferences.</p>
-      <p>Open to Summer 2027 data science internships. Reach me at <strong>aj3491@columbia.edu</strong></p>
+      <p>I’m currently exploring Summer 2027 opportunities in Data Science and Product. Reach me at <strong>aj3491@columbia.edu</strong></p>
     </div>
     <a href="https://drive.google.com/file/d/1mJIeGD75ApG42ukMIgY7lUfqfCECqHdb/view" target="_blank" class="resume-btn">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -739,7 +739,7 @@
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-header"><span class="tl-title">Data Science Intern</span><span class="tl-company">· Eli Lilly and Company</span></div>
+          <div class="tl-header"><span class="tl-title">Tech Intern (Data Science)</span><span class="tl-company">· Eli Lilly and Company</span></div>
           <div class="tl-date">Jan 2026 — Jul 2026 · Bengaluru, IN</div>
           <ul>
             <li>Developed an agentic AI evaluation SDK using a 4 agent LangGraph pipeline to evaluate LLM outputs with dynamic criteria generation, 15 compliance criteria (hallucination detection, factual accuracy, bias, etc.), scoring from 0 to 100 with failure propagation, and cross model verdicts across 10 plus GPT and Claude variants</li>
@@ -755,7 +755,7 @@
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
-          <div class="tl-header"><span class="tl-title">Data Analyst Intern</span><span class="tl-company">· Bureau of Indian Standards</span></div>
+          <div class="tl-header"><span class="tl-title">Research Intern (Data Analyst)</span><span class="tl-company">· Thapar Institute & Bureau of Indian Standards</span></div>
           <div class="tl-date">Mar 2025 — Aug 2025 · New Delhi, IN</div>
           <ul>
             <li>Designed and executed a quantitative benchmarking framework comparing 30+ cryptographic algorithms including AES-256, RSA-2048, and ChaCha20 across security, performance, and implementation dimensions</li>
@@ -787,7 +787,7 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-header"><span class="tl-title">Undergraduate Researcher</span><span class="tl-company">· Thapar Institute of Engineering & Technology</span></div>
-          <div class="tl-date">Mar 2024 — Aug 2024 · Patiala</div>
+          <div class="tl-date">Aug 2024 — Feb 2025 · Patiala</div>
           <ul>
             <li>Proposed the AFS-MHMD framework combining vision models including VGG16 and ResNeXt-101 with transformer encoders such as BERT and RoBERTa for multimodal hateful meme detection</li>
             <li>Achieved 0.5905 accuracy on Facebook AI’s Hateful Memes benchmark, a dataset known for near human level difficulty where state of the art models typically cluster in the 0.55 to 0.65 range</li>
@@ -809,6 +809,9 @@
         <div class="tl-card">
           <div class="tl-header"><span class="tl-title">Columbia University</span><span class="tl-company">· New York, US</span></div>
           <div class="tl-date">MS in Data Science · Aug 2026 — Dec 2027</div>
+          <ul>
+            <li><strong>Courses</strong>: Agentic AI for Data Science; Data Science Applications in Insurance & Banking; Exploratory Data Analysis and Visualization; Probability & Statistics</li>
+        </ul>
         </div>
       </div>
 
@@ -818,7 +821,7 @@
           <div class="tl-header"><span class="tl-title">Thapar Institute of Engineering & Technology</span><span class="tl-company">· Patiala, IN</span></div>
           <div class="tl-date">BE Computer Engineering · Sep 2022 — May 2026</div>
           <ul>
-            <li><strong>Courses</strong>: Machine Learning; Foundations of Data Science; Probability & Statistics; Predictive Analytics Using Statistics</li>
+            <li><strong>Courses</strong>: Machine Learning; Foundations of Data Science; Predictive Analytics Using Statistics</li>
             <li>Academic Merit Scholarship (Fall & Spring 2025)</li>
         </ul>
         </div>
@@ -834,12 +837,12 @@
     <div class="projects-grid" id="projects-grid"></div>
     <noscript>
       <ul>
-        <li><strong>Raga Time-of-Day Classification</strong> — Ensemble deep learning classifying Indian Classical Ragas by Pahar with 93.68% accuracy. Technologies: Python, PyTorch, Deep Learning, Audio ML. Conducted at IIT Ropar.</li>
+        <!--<li><strong>Raga Time-of-Day Classification</strong> — Ensemble deep learning classifying Indian Classical Ragas by Pahar with 93.68% accuracy. Technologies: Python, PyTorch, Deep Learning, Audio ML. Conducted at IIT Ropar.</li>-->
         <li><strong>Breast Cancer Thermal Detection + XAI</strong> — VGG16 pipeline for thermal breast cancer detection with SHAP explainability. 92.7% accuracy, 99.63% AUROC. Published in Journal of Thermal Biology (Elsevier Q1, IF: 3.22), Feb 2026. Technologies: Python, VGG16, SHAP, TensorFlow.</li>
         <li><strong>Multimodal Hateful Meme Detection</strong> — AFS-MHMD: adaptive fusion of vision models (AlexNet, VGG16, ResNeXt-101) and language transformers (BERT, DistilBERT, RoBERTa). 0.5905 accuracy on Facebook AI's Hateful Memes dataset. Published at IMVIP 2025, Ireland. Technologies: Python, BERT, ResNeXt, Hugging Face.</li>
         <li><strong>Video Super-Resolution via LDMs</strong> — 4× video super-resolution using Latent Diffusion Models. PSNR 29–30 dB, SSIM &gt; 0.85 across 200 frames. Published at IEEE InC4 2025. Technologies: Python, PyTorch, LDM, VQGAN.</li>
-        <li><strong>Transformer Evaluation Framework</strong> — TOPSIS-based multi-criteria framework comparing LaBSE, Nomic-Embed-text, and Stella-1.5B on semantic sentence similarity. Published at IEEE InC4 2025. Technologies: Python, NLP, TOPSIS, Transformers.</li>
-        <li><strong>NMT Model Evaluator</strong> — Multi-criteria TOPSIS comparison of 5 NMT models for English-French translation across BLEU, ROUGE, execution time, and model size. Published at IEEE InC4 2025. Technologies: Python, NLP, BLEU, TOPSIS.</li>
+        <!--<li><strong>Transformer Evaluation Framework</strong> — TOPSIS-based multi-criteria framework comparing LaBSE, Nomic-Embed-text, and Stella-1.5B on semantic sentence similarity. Published at IEEE InC4 2025. Technologies: Python, NLP, TOPSIS, Transformers.</li>-->
+        <!--<li><strong>NMT Model Evaluator</strong> — Multi-criteria TOPSIS comparison of 5 NMT models for English-French translation across BLEU, ROUGE, execution time, and model size. Published at IEEE InC4 2025. Technologies: Python, NLP, BLEU, TOPSIS.</li>-->
       </ul>
     </noscript>
   </section>
@@ -855,7 +858,7 @@
         <li><strong>AFS-MHMD: Adaptive Fusion Strategies for Multi-modal Hateful Meme Detection</strong> — IMVIP 2025, Ireland · Sep 2025. Training-free multimodal framework combining vision models with transformer encoders achieving 0.5905 accuracy on Facebook AI's Hateful Memes dataset. <a href="https://pure.ulster.ac.uk/files/227817636/FinalProceedings_v1.1.pdf#page=149">View paper</a></li>
         <li><strong>Machine Learning with Latent Space for Super Resolution Temporal Reconstruction in Video Enhancement</strong> — IEEE InC4 2025. 4× video super-resolution via LDMs with PSNR 29–30 dB and SSIM &gt; 0.85 across 200 frames. <a href="https://ieeexplore.ieee.org/document/11256411/">View paper</a></li>
         <li><strong>A Systematic Framework for Evaluating Transformer Architectures in Semantic Sentence Similarity</strong> — IEEE InC4 2025. TOPSIS-based multi-criteria framework comparing LaBSE, Nomic-Embed-text, and Stella-1.5B. <a href="https://ieeexplore.ieee.org/abstract/document/11256279">View paper</a></li>
-        <li><strong>Machine Learning Pre-trained Language Models for English-French Neural Machine Translation using TOPSIS</strong> — IEEE InC4 2025. Evaluation of five NMT models showing efficient architectures outperform raw scale in real-world translation. <a href="https://ieeexplore.ieee.org/abstract/document/11256193">View paper</a></li>
+        <!--<li><strong>Machine Learning Pre-trained Language Models for English-French Neural Machine Translation using TOPSIS</strong> — IEEE InC4 2025. Evaluation of five NMT models showing efficient architectures outperform raw scale in real-world translation. <a href="https://ieeexplore.ieee.org/abstract/document/11256193">View paper</a></li> -->
       </ol>
     </noscript>
   </section>
@@ -963,7 +966,6 @@
             ${p.pills.slice(0,3).map(([t,c])=>`<span class="pill pill-${c}">${t}</span>`).join('')}
             ${p.pills.length>3?`<span class="pill pill-gray">+${p.pills.length-3}</span>`:''}
           </div>
-          <span class="proj-gh">${GH}</span>
         </div>
       </div>`).join('');
   }
