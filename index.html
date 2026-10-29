@@ -446,8 +446,8 @@
     .section-desc { font-size: 0.88rem; color: var(--muted); margin-top: -1.5rem; margin-bottom: 1.75rem; }
 
     .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 0.8rem;
     }
 
@@ -462,8 +462,6 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: 150px;
-      min-width: 0;
-      overflow-wrap: anywhere;
     }
 
     .proj-card:hover { border-color: #9ca3af; box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
@@ -471,7 +469,7 @@
     .proj-name { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.32rem; line-height: 1.35; letter-spacing: -0.01em; }
     .proj-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
 
-    .proj-card-footer { display: flex; flex-direction: column; align-items: flex-start; gap: 0.65rem; margin-top: 0.8rem; }
+    .proj-card-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 0.6rem; }
     .proj-gh { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: var(--muted); white-space: nowrap; transition: color 0.15s; }
     .proj-gh:hover { color: var(--text); }
 
@@ -588,10 +586,6 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 960px) {
-      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -615,6 +609,8 @@
       .tl-card { padding: 0.9rem 1rem; }
       .pills { gap: 0.25rem; }
       .pill { font-size: 0.6rem; padding: 0.15rem 0.55rem; }
+      /* 2-column grid for tablets before collapsing to 1 */
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
       .proj-name { font-size: 0.95rem; }
       .proj-desc { font-size: 0.85rem; }
       .pub-title { font-size: 0.95rem; }
@@ -628,7 +624,7 @@
       .nav-name { font-size: 1.1rem; }
       .site-content { padding: 0 1rem; }
       h1 { font-size: 1.55rem; margin-bottom: 0.7rem; }
-      .projects-grid { grid-template-columns: minmax(0, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
       section { padding-top: 1.8rem; padding-bottom: 1.8rem; }
       .about-text { font-size: 0.9rem; line-height: 1.65; }
       .about-text p { margin-top: 1rem; margin-bottom: 1rem; }
@@ -841,12 +837,12 @@
     <div class="projects-grid" id="projects-grid"></div>
     <noscript>
       <ul>
-        <li><strong>Daylight</strong>: Your calendar is only half the story. An agentic AI planner that connects Gmail and Google Calendar to uncover commitments, find free time, and turn plans into calendar events. <a href="https://github.com/Arnavsmayan/daylight" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
-        <li><strong>tag-genres</strong>: Give your music a mood. AI-powered MP3 tagging that turns song filenames into curated mood, energy, and language labels for English, Hindi, and Korean libraries. <a href="https://github.com/Arnavsmayan/tag-genres" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
-        <li><strong>Breast Thermography CNN</strong>: A VGG16 transfer-learning baseline for Healthy vs Sick classification on DMR thermal images, covering preprocessing, class-weighted training, evaluation curves, and prediction exports. <a href="https://github.com/Arnavsmayan/breast-thermography-cnn" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
-        <li><strong>Topsis</strong>: When every option wins at something. A published Python CLI that turns competing criteria and your priorities into a ranked shortlist using TOPSIS. <a href="https://github.com/Arnavsmayan/Topsis" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
-        <li><strong>Food Delivery SQL Analytics</strong>: Behind every order, a business question. A MySQL case study exploring customer spending, first-order cohorts, revenue patterns, and restaurant rankings across 20,000 synthetic orders. <a href="https://github.com/Arnavsmayan/food-delivery-sql-analytics" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
-        <li><strong>AI-Traffic</strong>: See the queue. Rethink the green. A Flask and OpenCV prototype that counts vehicles in four road images and suggests green-light durations using weighted traffic loads. <a href="https://github.com/Arnavsmayan/AI-Traffic" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Daylight: Agentic Scheduling Assistant</strong>: Your calendar is only half the story. An agentic AI planner that connects Gmail and Google Calendar to uncover commitments, find free time, and turn plans into calendar events. <a href="https://github.com/Arnavsmayan/daylight" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Mood-Based Music Library Tagging</strong>: Give your music a mood. AI-powered MP3 tagging that turns song filenames into curated mood, energy, and language labels for English, Hindi, and Korean libraries. <a href="https://github.com/Arnavsmayan/tag-genres" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Breast Thermography Image Classification</strong>: A VGG16 transfer-learning baseline for Healthy vs Sick classification on DMR thermal images, covering preprocessing, class-weighted training, evaluation curves, and prediction exports. <a href="https://github.com/Arnavsmayan/breast-thermography-cnn" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Multi-Criteria Decision Ranking</strong>: When every option wins at something. A published Python CLI that turns competing criteria and your priorities into a ranked shortlist using TOPSIS. <a href="https://github.com/Arnavsmayan/Topsis" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Food Delivery Business Intelligence</strong>: Behind every order, a business question. A MySQL case study exploring customer spending, first-order cohorts, revenue patterns, and restaurant rankings across 20,000 synthetic orders. <a href="https://github.com/Arnavsmayan/food-delivery-sql-analytics" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Vision-Based Traffic Signal Timing</strong>: See the queue. Rethink the green. A Flask and OpenCV prototype that counts vehicles in four road images and suggests green-light durations using weighted traffic loads. <a href="https://github.com/Arnavsmayan/AI-Traffic" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
       </ul>
     </noscript>
   </section>
@@ -940,7 +936,7 @@
 
   const projects = [
     {
-        "name": "Daylight",
+        "name": "Daylight: Agentic Scheduling Assistant",
         "desc": "Your calendar is only half the story. An agentic AI planner that connects Gmail and Google Calendar to uncover commitments, find free time, and turn plans into calendar events.",
         "pills": [
             [
@@ -968,7 +964,7 @@
         "github": "https://github.com/Arnavsmayan/daylight"
     },
     {
-        "name": "tag-genres",
+        "name": "Mood-Based Music Library Tagging",
         "desc": "Give your music a mood. AI-powered MP3 tagging that turns song filenames into curated mood, energy, and language labels for English, Hindi, and Korean libraries.",
         "pills": [
             [
@@ -996,7 +992,7 @@
         "github": "https://github.com/Arnavsmayan/tag-genres"
     },
     {
-        "name": "Breast Thermography CNN",
+        "name": "Breast Thermography Image Classification",
         "desc": "A VGG16 transfer-learning baseline for Healthy vs Sick classification on DMR thermal images, covering preprocessing, class-weighted training, evaluation curves, and prediction exports.",
         "pills": [
             [
@@ -1024,7 +1020,7 @@
         "github": "https://github.com/Arnavsmayan/breast-thermography-cnn"
     },
     {
-        "name": "Topsis",
+        "name": "Multi-Criteria Decision Ranking",
         "desc": "When every option wins at something. A published Python CLI that turns competing criteria and your priorities into a ranked shortlist using TOPSIS.",
         "pills": [
             [
@@ -1052,7 +1048,7 @@
         "github": "https://github.com/Arnavsmayan/Topsis"
     },
     {
-        "name": "Food Delivery SQL Analytics",
+        "name": "Food Delivery Business Intelligence",
         "desc": "Behind every order, a business question. A MySQL case study exploring customer spending, first-order cohorts, revenue patterns, and restaurant rankings across 20,000 synthetic orders.",
         "pills": [
             [
@@ -1080,7 +1076,7 @@
         "github": "https://github.com/Arnavsmayan/food-delivery-sql-analytics"
     },
     {
-        "name": "AI-Traffic",
+        "name": "Vision-Based Traffic Signal Timing",
         "desc": "See the queue. Rethink the green. A Flask and OpenCV prototype that counts vehicles in four road images and suggests green-light durations using weighted traffic loads.",
         "pills": [
             [
