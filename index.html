@@ -470,7 +470,7 @@
     .proj-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
 
     .proj-card-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 0.6rem; }
-    .proj-gh { color: var(--muted); transition: color 0.15s; }
+    .proj-gh { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.75rem; color: var(--muted); white-space: nowrap; transition: color 0.15s; }
     .proj-gh:hover { color: var(--text); }
 
     /* PUBLICATIONS */
@@ -837,9 +837,12 @@
     <div class="projects-grid" id="projects-grid"></div>
     <noscript>
       <ul>
-        <li><strong>Breast Cancer Thermal Detection + XAI</strong> — VGG16 pipeline for thermal breast cancer detection with SHAP explainability. 92.7% accuracy, 99.63% AUROC. Published in Journal of Thermal Biology (Elsevier Q1, IF: 3.22), Feb 2026. Technologies: Python, VGG16, SHAP, TensorFlow.</li>
-        <li><strong>Multimodal Hateful Meme Detection</strong> — AFS-MHMD: adaptive fusion of vision models (AlexNet, VGG16, ResNeXt-101) and language transformers (BERT, DistilBERT, RoBERTa). 0.5905 accuracy on Facebook AI's Hateful Memes dataset. Published at IMVIP 2025, Ireland. Technologies: Python, BERT, ResNeXt, Hugging Face.</li>
-        <li><strong>Video Super-Resolution via LDMs</strong> — 4× video super-resolution using Latent Diffusion Models. PSNR 29–30 dB, SSIM &gt; 0.85 across 200 frames. Published at IEEE InC4 2025. Technologies: Python, PyTorch, LDM, VQGAN.</li>
+        <li><strong>Daylight</strong>: Your calendar is only half the story. An agentic AI planner that connects Gmail and Google Calendar to uncover commitments, find free time, and turn plans into calendar events. <a href="https://github.com/Arnavsmayan/daylight" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>tag-genres</strong>: Give your music a mood. AI-powered MP3 tagging that turns song filenames into curated mood, energy, and language labels for English, Hindi, and Korean libraries. <a href="https://github.com/Arnavsmayan/tag-genres" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Breast Thermography CNN</strong>: A VGG16 transfer-learning baseline for Healthy vs Sick classification on DMR thermal images, covering preprocessing, class-weighted training, evaluation curves, and prediction exports. <a href="https://github.com/Arnavsmayan/breast-thermography-cnn" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Topsis</strong>: When every option wins at something. A published Python CLI that turns competing criteria and your priorities into a ranked shortlist using TOPSIS. <a href="https://github.com/Arnavsmayan/Topsis" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>Food Delivery SQL Analytics</strong>: Behind every order, a business question. A MySQL case study exploring customer spending, first-order cohorts, revenue patterns, and restaurant rankings across 20,000 synthetic orders. <a href="https://github.com/Arnavsmayan/food-delivery-sql-analytics" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
+        <li><strong>AI-Traffic</strong>: See the queue. Rethink the green. A Flask and OpenCV prototype that counts vehicles in four road images and suggests green-light durations using weighted traffic loads. <a href="https://github.com/Arnavsmayan/AI-Traffic" target="_blank" rel="noopener noreferrer">View on GitHub</a></li>
       </ul>
     </noscript>
   </section>
@@ -932,11 +935,174 @@
   });
 
   const projects = [
-    { name:"Breast Cancer Thermal Detection + XAI", desc:"Deep learning pipeline for breast cancer detection from thermal imaging, combining VGG16 classification, quadrant-wise segmentation, and SHAP-based explainability. Achieved 99.63% AUROC on the Visual DMR dataset and published in the Journal of Thermal Biology (Elsevier Q1).", pills:[["Python","blue"],["VGG16","coral"],["SHAP","green"],["TensorFlow","amber"]], details:["Achieved 92.7% accuracy and 99.63% AUROC on the Visual DMR dataset.","Implemented quadrant-wise breast segmentation (UOQ, UIQ, LOQ, LIQ).","Integrated SHAP-based XAI to generate pixel-level thermal attribution maps.","Published in Journal of Thermal Biology — Elsevier Q1 (IF: 3.22), Feb 2026."], github:"https://github.com/Arnavsmayan/breast-thermography-cnn", paper:"https://www.sciencedirect.com/science/article/abs/pii/S0306456526000598" },
-
-    { name:"Multimodal Hateful Meme Detection", desc:"Multimodal deep learning system combining CNN-based vision encoders with BERT-family language transformers for detecting hateful content in memes. Developed adaptive feature fusion and achieved 0.5905 accuracy on Facebook AI's Hateful Memes benchmark, published at IMVIP 2025.", pills:[["Python","blue"],["BERT","purple"],["ResNeXt","coral"],["Hugging Face","green"]], details:["Combined AlexNet, VGG16, ResNeXt-101 with BERT, DistilBERT, RoBERTa.","Adaptive fusion via mid-level feature concatenation and model souping.","Achieved 0.5905 accuracy on Facebook AI's Hateful Memes dataset.","Published at IMVIP 2025, Ireland."], github:"https://github.com/", paper:"https://pure.ulster.ac.uk/files/227817636/FinalProceedings_v1.1.pdf#page=149" },
-
-    { name:"Video Super-Resolution via LDMs", desc:"Latent Diffusion Model pipeline for 4× video super-resolution, reconstructing high-resolution frames in compressed latent space using a VQGAN autoencoder. Achieved 29–30 dB PSNR and SSIM above 0.85 across 200 frames, published at IEEE InC4 2025.", pills:[["Python","blue"],["PyTorch","purple"],["LDM","teal"],["VQGAN","amber"]], details:["4× super-resolution processing frames in compressed latent space via VQGAN autoencoder.","PSNR 29–30 dB and SSIM > 0.85 across 200 frames.","Low LPIPS scores confirming strong perceptual quality and temporal consistency.","Published at IEEE InC4 2025."], github:"https://github.com/", paper:"https://ieeexplore.ieee.org/document/11256411/" },
+    {
+        "name": "Daylight",
+        "desc": "Your calendar is only half the story. An agentic AI planner that connects Gmail and Google Calendar to uncover commitments, find free time, and turn plans into calendar events.",
+        "pills": [
+            [
+                "Agentic AI",
+                "purple"
+            ],
+            [
+                "FastAPI",
+                "blue"
+            ],
+            [
+                "Gemini",
+                "teal"
+            ],
+            [
+                "Google APIs",
+                "green"
+            ]
+        ],
+        "details": [
+            "Combines calendar events and relevant Gmail snippets to help identify commitments and possible scheduling conflicts.",
+            "Uses Gemini through LiteLLM to select tools in a FastAPI agent loop, with tool calls visible in the interface.",
+            "Supports calendar event creation and deletion with a confirmation step."
+        ],
+        "github": "https://github.com/Arnavsmayan/daylight"
+    },
+    {
+        "name": "tag-genres",
+        "desc": "Give your music a mood. AI-powered MP3 tagging that turns song filenames into curated mood, energy, and language labels for English, Hindi, and Korean libraries.",
+        "pills": [
+            [
+                "Python",
+                "blue"
+            ],
+            [
+                "OpenAI",
+                "purple"
+            ],
+            [
+                "ID3 Tags",
+                "coral"
+            ],
+            [
+                "Mutagen",
+                "green"
+            ]
+        ],
+        "details": [
+            "Chooses 1 to 3 labels per song from a 19-tag palette, then writes separate ID3 genre values.",
+            "Processes filenames in batches, validates response alignment and allowed tags, and skips already-tagged tracks.",
+            "Includes dry-run previews, API retries, and local daily token tracking; audio is not uploaded."
+        ],
+        "github": "https://github.com/Arnavsmayan/tag-genres"
+    },
+    {
+        "name": "Breast Thermography CNN",
+        "desc": "A VGG16 transfer-learning baseline for Healthy vs Sick classification on DMR thermal images, covering preprocessing, class-weighted training, evaluation curves, and prediction exports.",
+        "pills": [
+            [
+                "TensorFlow",
+                "amber"
+            ],
+            [
+                "VGG16",
+                "coral"
+            ],
+            [
+                "Computer Vision",
+                "blue"
+            ],
+            [
+                "Python",
+                "green"
+            ]
+        ],
+        "details": [
+            "Uses a frozen ImageNet-pretrained VGG16 backbone with a regularized classification head.",
+            "Includes early stopping, ROC and precision-recall curves, class-level metrics, and CSV exports.",
+            "The saved run reports 0.8759 test AUROC on an image-level split; patients may overlap across splits, so this is not an unseen-patient or clinical validation result."
+        ],
+        "github": "https://github.com/Arnavsmayan/breast-thermography-cnn"
+    },
+    {
+        "name": "Topsis",
+        "desc": "When every option wins at something. A published Python CLI that turns competing criteria and your priorities into a ranked shortlist using TOPSIS.",
+        "pills": [
+            [
+                "PyPI Package",
+                "purple"
+            ],
+            [
+                "NumPy",
+                "blue"
+            ],
+            [
+                "pandas",
+                "green"
+            ],
+            [
+                "Decision Analysis",
+                "amber"
+            ]
+        ],
+        "details": [
+            "Published on PyPI as topsis-arnav-102203979, with a topsis command-line entry point.",
+            "Accepts CSV alternatives, criterion weights, and benefit/cost directions; exports scores and ranks.",
+            "Uses vector normalization, weighted criteria, and distances from ideal best and worst alternatives."
+        ],
+        "github": "https://github.com/Arnavsmayan/Topsis"
+    },
+    {
+        "name": "Food Delivery SQL Analytics",
+        "desc": "Behind every order, a business question. A MySQL case study exploring customer spending, first-order cohorts, revenue patterns, and restaurant rankings across 20,000 synthetic orders.",
+        "pills": [
+            [
+                "MySQL",
+                "blue"
+            ],
+            [
+                "CTEs",
+                "purple"
+            ],
+            [
+                "Window Functions",
+                "teal"
+            ],
+            [
+                "Python",
+                "green"
+            ]
+        ],
+        "details": [
+            "Models customers, restaurants, menus, orders, and order items across five related tables.",
+            "Generates 5,000 customers, 200 restaurants, and 20,000 orders on a fresh schema using Python and Faker.",
+            "Includes ten analysis sections using joins, CTEs, RANK, and NTILE for business-oriented SQL exploration."
+        ],
+        "github": "https://github.com/Arnavsmayan/food-delivery-sql-analytics"
+    },
+    {
+        "name": "AI-Traffic",
+        "desc": "See the queue. Rethink the green. A Flask and OpenCV prototype that counts vehicles in four road images and suggests green-light durations using weighted traffic loads.",
+        "pills": [
+            [
+                "OpenCV",
+                "blue"
+            ],
+            [
+                "Flask",
+                "green"
+            ],
+            [
+                "Object Detection",
+                "coral"
+            ],
+            [
+                "Python",
+                "amber"
+            ]
+        ],
+        "details": [
+            "Detects cars, buses, trucks, and motorbikes, filters overlapping boxes, and saves annotated images.",
+            "Converts vehicle counts into weighted equivalent car units before applying a timing heuristic.",
+            "Displays counts and timing suggestions for four uploaded images; this is a still-image prototype, not a live traffic-signal controller."
+        ],
+        "github": "https://github.com/Arnavsmayan/AI-Traffic"
+    }
 ];
 
   const publications = [
@@ -962,6 +1128,7 @@
             ${p.pills.slice(0,3).map(([t,c])=>`<span class="pill pill-${c}">${t}</span>`).join('')}
             ${p.pills.length>3?`<span class="pill pill-gray">+${p.pills.length-3}</span>`:''}
           </div>
+          <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="proj-gh" aria-label="View ${p.name} on GitHub" onclick="event.stopPropagation()">${GH} GitHub</a>
         </div>
       </div>`).join('');
   }
@@ -985,7 +1152,7 @@
       <h4>Project Details</h4>
       <ul>${p.details.map(d=>`<li>${d}</li>`).join('')}</ul>
       <div class="modal-actions">
-        <a href="${p.github}" target="_blank" class="modal-btn modal-btn-dark">${GH} View on GitHub</a>
+        <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="modal-btn modal-btn-dark">${GH} View on GitHub</a>
         ${p.paper?`<a href="${p.paper}" target="_blank" class="modal-btn modal-btn-blue">${EXT} View Paper</a>`:''}
       </div>`;
     document.getElementById('modal-overlay').classList.add('open');
